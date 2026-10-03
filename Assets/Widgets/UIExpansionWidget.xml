@@ -1,10 +1,30 @@
-<CanvasWidget>
-  <ContainerWidget Name="Panel" Size="360, 96" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="18,18">
-    <RectangleWidget Name="Background" FillColor="0,0,0,150" />
-    <StackPanelWidget Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="14,8">
-      <LabelWidget Name="Title" Text="UI Expansion" FontScale="0.75" />
-      <LabelWidget Name="Time" Text="Time: --:--:--" FontScale="0.65" />
-      <LabelWidget Name="Position" Text="X: --  Y: --  Z: --" FontScale="0.65" />
+<CanvasWidget xmlns="Game">
+  <ContainerWidget Name="Panel"
+                   Size="360,96"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Margin="18,18">
+
+    <RectangleWidget Name="Background"
+                     FillColor="0,0,0,150" />
+
+    <StackPanelWidget Orientation="Vertical"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       Margin="14,8">
+
+      <LabelWidget Name="Title"
+                   Text="UI Expansion"
+                   FontScale="0.75" />
+
+      <LabelWidget Name="Time"
+                   Text="Time: --:--:--"
+                   FontScale="0.65" />
+
+      <LabelWidget Name="Position"
+                   Text="X: --  Y: --  Z: --"
+                   FontScale="0.65" />
+
     </StackPanelWidget>
   </ContainerWidget>
 </CanvasWidget>
