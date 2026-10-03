@@ -1,7 +1,5 @@
 using System;
 using System.Xml.Linq;
-using System;
-using System.Xml.Linq;
 using Engine;
 
 namespace Game;
@@ -11,7 +9,7 @@ public sealed class UIExpansionWidget : CanvasWidget
     private readonly ComponentPlayer m_player;
     private readonly LabelWidget m_time;
     private readonly LabelWidget m_position;
-    private readonly ContainerWidget m_panel;
+    private readonly CanvasWidget m_panel;
 
     public UIExpansionWidget(ComponentPlayer player)
     {
@@ -22,7 +20,7 @@ public sealed class UIExpansionWidget : CanvasWidget
             ContentManager.Get<XElement>("Widgets/UIExpansionWidget")
         );
 
-        m_panel = Children.Find<ContainerWidget>("Panel");
+        m_panel = Children.Find<CanvasWidget>("Panel");
         m_time = Children.Find<LabelWidget>("Time");
         m_position = Children.Find<LabelWidget>("Position");
     }
@@ -60,12 +58,14 @@ public sealed class UIExpansionWidget : CanvasWidget
             if (body != null)
             {
                 Vector3 p = body.Position;
+
                 m_position.Text =
                     $"X: {p.X:0}  Y: {p.Y:0}  Z: {p.Z:0}";
             }
             else
             {
-                m_position.Text = "X: --  Y: --  Z: --";
+                m_position.Text =
+                    "X: --  Y: --  Z: --";
             }
 
             m_position.IsVisible = true;
