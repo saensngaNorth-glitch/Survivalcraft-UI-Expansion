@@ -1,4 +1,4 @@
-<CanvasWidget xmlns="Game">
+<CanvasWidget xmlns="runtime-namespace:Game">
   <ContainerWidget Name="Panel"
                    Size="360,96"
                    HorizontalAlignment="Right"
