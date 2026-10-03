@@ -1,9 +1,10 @@
 <CanvasWidget xmlns="runtime-namespace:Game">
-  <ContainerWidget Name="Panel"
-                   Size="360,96"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   Margin="18,18">
+
+  <CanvasWidget Name="Panel"
+                Size="360,96"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="18,18">
 
     <RectangleWidget Name="Background"
                      FillColor="0,0,0,150" />
@@ -26,5 +27,7 @@
                    FontScale="0.65" />
 
     </StackPanelWidget>
-  </ContainerWidget>
+
+  </CanvasWidget>
+
 </CanvasWidget>
