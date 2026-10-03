@@ -1,11 +1,20 @@
 <CanvasWidget xmlns="runtime-namespace:Game">
-  <CanvasWidget Name="Panel" Size="360,96">
+  <CanvasWidget Name="Panel" Size="360,110">
     <RectangleWidget Name="Background" FillColor="0,0,0,150" />
 
-    <StackPanelWidget Margin="14,8">
-      <LabelWidget Name="Title" Text="UI Expansion" FontScale="0.75" />
-      <LabelWidget Name="Time" Text="Time: --:--:--" FontScale="0.65" />
-      <LabelWidget Name="Position" Text="X: --  Y: --  Z: --" FontScale="0.65" />
-    </StackPanelWidget>
+    <LabelWidget Name="Title"
+                 Text="UI EXPANSION"
+                 Margin="14,8"
+                 FontScale="0.7" />
+
+    <LabelWidget Name="Time"
+                 Text="Time: --:--:--"
+                 Margin="14,38"
+                 FontScale="0.6" />
+
+    <LabelWidget Name="Position"
+                 Text="X: --  Y: --  Z: --"
+                 Margin="14,66"
+                 FontScale="0.6" />
   </CanvasWidget>
 </CanvasWidget>
