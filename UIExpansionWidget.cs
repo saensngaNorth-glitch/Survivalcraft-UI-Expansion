@@ -144,7 +144,7 @@ public sealed class UIExpansionWidget : CanvasWidget
         return true;
     }
 
-    private void UpdateDebugHud()
+        private void UpdateDebugHud()
     {
         if (m_debugButton != null && m_debugButton.IsClicked)
             m_debugVisible = !m_debugVisible;
@@ -155,13 +155,6 @@ public sealed class UIExpansionWidget : CanvasWidget
 
         ComponentBody? body = m_player.Entity.FindComponent<ComponentBody>(true);
         if (body == null)
-        {
-            Children.Find<LabelWidget>("DebugPosition").Text = "XYZ: -- -- --";
             return;
-        }
-
-        Vector3 p = body.Position;
-        Children.Find<LabelWidget>("DebugPosition").Text =
-            $"XYZ: {p.X:0.00} / {p.Y:0.00} / {p.Z:0.00}";
     }
 }
