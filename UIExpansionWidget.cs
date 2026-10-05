@@ -99,8 +99,8 @@ public sealed class UIExpansionWidget : CanvasWidget
         {
             Name = "UIExpansion.DebugButton",
             Size = new Vector2(68f, 64f),
-            NormalSubtexture = "{Textures/Atlas/EditItemButton}",
-            ClickedSubtexture = "{Textures/Atlas/EditItemButton_Pressed}",
+                        NormalSubtexture = ContentManager.Get<Subtexture>("Textures/Atlas/EditItemButton"),
+                        ClickedSubtexture = ContentManager.Get<Subtexture>("Textures/Atlas/EditItemButton_Pressed"),
             Margin = new Vector2(4f, 0f)
         };
 
