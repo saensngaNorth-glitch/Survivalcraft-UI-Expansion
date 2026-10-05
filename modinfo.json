@@ -1,9 +1,9 @@
 {
   "$schema": "https://gitee.com/SC-SPM/SurvivalcraftApi/raw/SCAPI1.9/Survivalcraft/Content/modinfo-scheme.json",
   "Name": "UI Expansion",
-  "Version": "0.3.0",
+  "Version": "0.4.0",
   "ApiVersion": "1.9.3",
-  "Description": "HUD prototype with live time and player coordinates.",
+  "Description": "HUD enhancement with an F3-style Debug button and player coordinates.",
   "ScVersion": "2.4.0.0",
   "LoadOrder": 10000,
   "NonPersistentMod": true,
@@ -17,9 +17,35 @@
       "Name": "UI Expansion",
       "Title": "UI Expansion Settings",
       "Items": [
-        {"Id":"HUD","Type":"bool","Default":true,"Name":"[UIExpansion/Settings/UIExpansionSettings:HUD]","Description":"[UIExpansion/Settings/UIExpansionSettings:HUDDescription]","Widget":"BoolButtonSettingWidget"},
-        {"Id":"WorldInfo","Type":"bool","Default":true,"Name":"[UIExpansion/Settings/UIExpansionSettings:WorldInfo]","Description":"[UIExpansion/Settings/UIExpansionSettings:WorldInfoDescription]","Widget":"BoolButtonSettingWidget"},
-        {"Id":"HUDScale","Type":"float","Default":1.0,"Name":"[UIExpansion/Settings/UIExpansionSettings:HUDScale]","Description":"[UIExpansion/Settings/UIExpansionSettings:HUDScaleDescription]","Widget":"NumberSliderSettingWidget","WidgetProperties":{"MinValue":0.5,"MaxValue":1.5,"Granularity":0.05}}
+        {
+          "Id": "HUD",
+          "Type": "bool",
+          "Default": true,
+          "Name": "[UIExpansion/Settings/UIExpansionSettings:HUD]",
+          "Description": "[UIExpansion/Settings/UIExpansionSettings:HUDDescription]",
+          "Widget": "BoolButtonSettingWidget"
+        },
+        {
+          "Id": "WorldInfo",
+          "Type": "bool",
+          "Default": true,
+          "Name": "[UIExpansion/Settings/UIExpansionSettings:WorldInfo]",
+          "Description": "[UIExpansion/Settings/UIExpansionSettings:WorldInfoDescription]",
+          "Widget": "BoolButtonSettingWidget"
+        },
+        {
+          "Id": "HUDScale",
+          "Type": "float",
+          "Default": 1.0,
+          "Name": "[UIExpansion/Settings/UIExpansionSettings:HUDScale]",
+          "Description": "[UIExpansion/Settings/UIExpansionSettings:HUDScaleDescription]",
+          "Widget": "NumberSliderSettingWidget",
+          "WidgetProperties": {
+            "MinValue": 0.5,
+            "MaxValue": 1.5,
+            "Granularity": 0.05
+          }
+        }
       ]
     }
   ]

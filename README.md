@@ -1,8 +1,12 @@
-# Survivalcraft UI Expansion v0.3.0
+# Survivalcraft UI Expansion v0.4.0
+
 Target: Survivalcraft 2.4.0.0 / API 1.9.3.
 
-This pass follows the public API 1.9 template architecture: ModLoader + HarmonyX + CanvasWidget. The Harmony postfix adds one widget to each player's `GuiWidget` after `ComponentPlayer.Load`; the widget reads `ModSettingsManager` and displays the current time and `ComponentBody.Position`.
+## Changes
+- Keeps the existing HUD time/position overlay.
+- Uses the game's existing `•••` More button and its `MoreContents` bar.
+- Inserts a text button named `Debug` immediately after the existing `?` (`HelpButton`).
+- Tapping `Debug` toggles an F3-style debug overlay with precise XYZ coordinates.
+- No second `•••` button is created.
 
-Settings: HUD toggle, World Information toggle, HUD Scale 0.5–1.5.
-
-Source-only: this environment has no .NET SDK, so no compiled DLL or installable `.scmod` is claimed here.
+The Debug button is inserted at runtime so the original game `GameWidget.xml` is not replaced.
