@@ -113,7 +113,7 @@ public sealed class UIExpansionWidget : CanvasWidget
         m_buttonInstalled = true;
     }
 
-    private static bool InsertAfter(Widget parent, Widget after, Widget child)
+    private static bool InsertAfter(StackPanelWidget parent, Widget after, Widget child)
     {
         object children = parent.Children;
         Type type = children.GetType();
