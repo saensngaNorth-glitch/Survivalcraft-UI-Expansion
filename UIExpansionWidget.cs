@@ -17,14 +17,8 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        // โหลด XML ผ่าน ModsManager เพื่ออ่านไฟล์จากโฟลเดอร์มอดโดยตรง ไม่ให้เกมเด้ง
-        XElement xelement;
-        using (Stream stream = ModsManager.OpenFile("Widgets/UIExpansionWidget.xml"))
-        {
-            xelement = XElement.Load(stream);
-        }
-        
-        // ส่ง XElement เข้า LoadContents ตามที่คอมไพเลอร์ต้องการ
+        // โหลดเนื้อหาไฟล์ XML โดยตรงผ่านเมธอด XElement.Parse ร่วมกับระบบแปลง Content ในมอดอย่างถูกต้อง
+        XElement xelement = XElement.Parse(ContentManager.Get<string>("Widgets/UIExpansionWidget"));
         LoadContents(this, xelement);
         
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
