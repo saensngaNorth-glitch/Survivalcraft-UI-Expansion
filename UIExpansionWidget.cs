@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
 using Engine;
@@ -17,8 +16,8 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        // โหลดเนื้อหาไฟล์ XML โดยตรงผ่านเมธอด XElement.Parse ร่วมกับระบบแปลง Content ในมอดอย่างถูกต้อง
-        XElement xelement = XElement.Parse(ContentManager.Get<string>("Widgets/UIExpansionWidget"));
+        // ใช้คำสั่งนี้ตามโครงสร้างดั้งเดิมของตัวเกมและมอดของคุณเพื่อโหลด XML ออกมาเป็น XElement
+        XElement xelement = ContentManager.Get<XElement>("Widgets/UIExpansionWidget");
         LoadContents(this, xelement);
         
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
