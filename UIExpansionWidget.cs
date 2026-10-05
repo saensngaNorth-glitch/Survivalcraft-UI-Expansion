@@ -13,7 +13,7 @@ public sealed class UIExpansionWidget : CanvasWidget
     private readonly CanvasWidget m_panel;
     private readonly CanvasWidget m_debugPanel;
 
-    private BevelledButtonWidget? m_debugButton;
+    private BitmapButtonWidget? m_debugButton;
     private bool m_buttonInstalled;
     private bool m_debugVisible;
 
@@ -95,11 +95,12 @@ public sealed class UIExpansionWidget : CanvasWidget
         if (moreContents == null || helpButton == null)
             return;
 
-        var button = new BevelledButtonWidget
+        var button = new BitmapButtonWidget
         {
             Name = "UIExpansion.DebugButton",
-            Text = "Debug",
-            Size = new Vector2(92f, 64f),
+            Size = new Vector2(68f, 64f),
+            NormalSubtexture = "{Textures/Atlas/EditItemButton}",
+            ClickedSubtexture = "{Textures/Atlas/EditItemButton_Pressed}",
             Margin = new Vector2(4f, 0f)
         };
 
