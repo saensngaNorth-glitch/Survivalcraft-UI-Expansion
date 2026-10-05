@@ -1,23 +1,4 @@
 <CanvasWidget xmlns="runtime-namespace:Game">
-  <CanvasWidget Name="Panel" Size="360,110" HorizontalAlignment="Far" VerticalAlignment="Near" Margin="18,18" IsVisible="false">
-    <RectangleWidget Name="Background" FillColor="0,0,0,150" />
-
-    <LabelWidget Name="Title"
-                 Text="UI EXPANSION"
-                 Margin="14,8"
-                 FontScale="0.7" />
-
-    <LabelWidget Name="Time"
-                 Text="Time: --:--:--"
-                 Margin="14,38"
-                 FontScale="0.6" />
-
-    <LabelWidget Name="Position"
-                 Text="X: --  Y: --  Z: --"
-                 Margin="14,66"
-                 FontScale="0.6" />
-  </CanvasWidget>
-
   <CanvasWidget Name="DebugPanel" Size="440,128" HorizontalAlignment="Near" VerticalAlignment="Near" Margin="18,90" IsVisible="false">
     <RectangleWidget Name="DebugBackground" FillColor="0,0,0,175" />
 
