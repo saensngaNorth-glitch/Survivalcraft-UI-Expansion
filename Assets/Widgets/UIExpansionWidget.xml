@@ -1,20 +1,15 @@
 <CanvasWidget xmlns="runtime-namespace:Game">
+  <CanvasWidget Name="Panel" Size="0,0" HorizontalAlignment="Far" VerticalAlignment="Near" Margin="0,0" IsVisible="false">
+    <RectangleWidget Name="Background" FillColor="0,0,0,0" IsVisible="false" />
+    <LabelWidget Name="Title" Text="" IsVisible="false" />
+    <LabelWidget Name="Time" Text="" IsVisible="false" />
+    <LabelWidget Name="Position" Text="" IsVisible="false" />
+  </CanvasWidget>
+
   <CanvasWidget Name="DebugPanel" Size="440,128" HorizontalAlignment="Near" VerticalAlignment="Near" Margin="18,90" IsVisible="false">
     <RectangleWidget Name="DebugBackground" FillColor="0,0,0,175" />
-
-    <LabelWidget Name="DebugTitle"
-                 Text="DEBUG"
-                 Margin="12,8"
-                 FontScale="0.75" />
-
-    <LabelWidget Name="DebugPosition"
-                 Text="XYZ: -- -- --"
-                 Margin="12,38"
-                 FontScale="0.65" />
-
-    <LabelWidget Name="DebugTime"
-                 Text="F3 Debug HUD"
-                 Margin="12,68"
-                 FontScale="0.6" />
+    <LabelWidget Name="DebugTitle" Text="DEBUG" Margin="12,8" FontScale="0.75" />
+    <LabelWidget Name="DebugPosition" Text="XYZ: -- -- --" Margin="12,38" FontScale="0.65" />
+    <LabelWidget Name="DebugTime" Text="F3 Debug HUD" Margin="12,68" FontScale="0.6" />
   </CanvasWidget>
 </CanvasWidget>
