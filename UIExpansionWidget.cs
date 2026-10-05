@@ -17,14 +17,14 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        // ดึงไฟล์ XML จากโฟลเดอร์ Assets และแปลงเป็น XElement โดยตรงตามระบบของคอมไพเลอร์ C#
+        // โหลด XML ผ่าน ModsManager เพื่ออ่านไฟล์จากโฟลเดอร์มอดโดยตรง ไม่ให้เกมเด้ง
         XElement xelement;
-        using (Stream stream = Storage.OpenFile("Assets/Widgets/UIExpansionWidget.xml", OpenFileMode.Read))
+        using (Stream stream = ModsManager.OpenFile("Widgets/UIExpansionWidget.xml"))
         {
             xelement = XElement.Load(stream);
         }
         
-        // ส่ง XElement เข้า LoadContents ตามที่ระบบฟ้องต้องการ
+        // ส่ง XElement เข้า LoadContents ตามที่คอมไพเลอร์ต้องการ
         LoadContents(this, xelement);
         
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
