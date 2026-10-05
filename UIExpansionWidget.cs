@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Reflection;
+using System.Xml.Linq;
 using Engine;
 using Game;
 
@@ -15,7 +17,15 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        LoadContents(this, "Widgets/UIExpansionWidget");
+        // ดึงไฟล์ XML จากโฟลเดอร์ Assets และแปลงเป็น XElement โดยตรงตามระบบของคอมไพเลอร์ C#
+        XElement xelement;
+        using (Stream stream = Storage.OpenFile("Assets/Widgets/UIExpansionWidget.xml", OpenFileMode.Read))
+        {
+            xelement = XElement.Load(stream);
+        }
+        
+        // ส่ง XElement เข้า LoadContents ตามที่ระบบฟ้องต้องการ
+        LoadContents(this, xelement);
         
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
         
@@ -79,7 +89,11 @@ public class UIExpansionWidget : CanvasWidget
         if (indexOf == null || insert == null)
             return false;
 
-        int index = (int)indexOf.Invoke(children, new object[] { after });
+        object? indexObj = indexOf.Invoke(children, new object[] { after });
+        if (indexObj == null)
+            return false;
+
+        int index = (int)indexObj;
         if (index < 0)
             return false;
 
