@@ -6,7 +6,7 @@
     <LabelWidget Name="Position" Text="" IsVisible="false" />
   </CanvasWidget>
 
-  <CanvasWidget Name="DebugPanel" Size="440,128" HorizontalAlignment="Near" VerticalAlignment="Near" Margin="18,90" IsVisible="false">
+  <CanvasWidget Name="DebugPanel" Size="440,128" HorizontalAlignment="Near" VerticalAlignment="Near" Margin="18,90" IsVisible="true">
     <RectangleWidget Name="DebugBackground" FillColor="0,0,0,175" />
     <LabelWidget Name="DebugTitle" Text="DEBUG" Margin="12,8" FontScale="0.75" />
     <LabelWidget Name="DebugPosition" Text="XYZ: -- -- --" Margin="12,38" FontScale="0.65" />
