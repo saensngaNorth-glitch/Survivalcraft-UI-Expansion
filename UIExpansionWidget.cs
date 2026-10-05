@@ -15,13 +15,10 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        // โหลดโครงสร้างหน้าจอจากไฟล์ XML
         LoadContents(this, "Widgets/UIExpansionWidget");
         
-        // ผูกตัวแปรเข้ากับกล่อง DebugPanel ใน XML
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
         
-        // ติดตั้งปุ่ม Debug
         InstallDebugButton();
     }
 
