@@ -10,7 +10,7 @@ internal static class UIExpansionHarmonyPatch
         if (__instance.GuiWidget == null)
             return;
 
-        if (__instance.GuiWidget.Children.Find<UIExpansionWidget>("UIExpansionRoot") != null)
+        if (__instance.GuiWidget.Children.Find<UIExpansionWidget>("UIExpansionRoot", false) != null)
             return;
 
         var widget = new UIExpansionWidget(__instance)
