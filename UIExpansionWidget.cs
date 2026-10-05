@@ -144,7 +144,7 @@ public sealed class UIExpansionWidget : CanvasWidget
         return true;
     }
 
-            private void UpdateDebugHud()
+                private void UpdateDebugHud()
     {
         if (m_debugButton != null && m_debugButton.IsClicked)
             m_debugVisible = !m_debugVisible;
@@ -158,4 +158,5 @@ public sealed class UIExpansionWidget : CanvasWidget
             return;
     }
 }
+
 
