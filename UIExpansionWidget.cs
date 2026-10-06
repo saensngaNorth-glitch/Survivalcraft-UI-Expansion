@@ -16,11 +16,11 @@ public class UIExpansionWidget : CanvasWidget
     {
         m_player = player;
         
-        // ใช้คำสั่งนี้ตามโครงสร้างดั้งเดิมของตัวเกมและมอดของคุณเพื่อโหลด XML ออกมาเป็น XElement
         XElement xelement = ContentManager.Get<XElement>("Widgets/UIExpansionWidget");
         LoadContents(this, xelement);
         
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
+        m_debugPanel.IsVisible = m_debugVisible;
         
         InstallDebugButton();
     }
@@ -96,10 +96,12 @@ public class UIExpansionWidget : CanvasWidget
 
     private void UpdateDebugHud()
     {
-        if (m_debugButton != null && m_debugButton.IsClicked)
-            m_debugVisible = !m_debugVisible;
+        if (m_debugButton != null)
+        {
+            m_debugVisible = m_debugButton.IsClicked;
+            m_debugPanel.IsVisible = m_debugVisible;
+        }
 
-        m_debugPanel.IsVisible = m_debugVisible;
         if (!m_debugVisible)
             return;
 
