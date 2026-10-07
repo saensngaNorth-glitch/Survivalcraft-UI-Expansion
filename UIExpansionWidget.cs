@@ -2,32 +2,86 @@ using System;
 using System.Reflection;
 using System.Xml.Linq;
 using Engine;
-using Game;
 
-public class UIExpansionWidget : CanvasWidget
+namespace Game;
+
+public sealed class UIExpansionWidget : CanvasWidget
 {
-    private ComponentPlayer m_player;
+    private readonly ComponentPlayer m_player;
+    private readonly LabelWidget m_time;
+    private readonly LabelWidget m_position;
+    private readonly CanvasWidget m_panel;
+    private readonly CanvasWidget m_debugPanel;
+
     private BitmapButtonWidget? m_debugButton;
-    private bool m_buttonInstalled = false;
-    private CanvasWidget m_debugPanel;
-    private bool m_debugVisible = false;
+    private bool m_buttonInstalled;
+    private bool m_debugVisible;
 
     public UIExpansionWidget(ComponentPlayer player)
     {
         m_player = player;
-        
-        XElement xelement = ContentManager.Get<XElement>("Widgets/UIExpansionWidget");
-        LoadContents(this, xelement);
-        
+
+        LoadContents(
+            this,
+            ContentManager.Get<XElement>("Widgets/UIExpansionWidget")
+        );
+
+        m_panel = Children.Find<CanvasWidget>("Panel");
+        m_time = Children.Find<LabelWidget>("Time");
+        m_position = Children.Find<LabelWidget>("Position");
         m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
-        m_debugPanel.IsVisible = m_debugVisible;
-        
-        InstallDebugButton();
     }
 
-    private void UpdateUpdate()
+    public override void Update()
     {
+        base.Update();
+
+        ModSettingsManager.TryGet(
+            out bool hud,
+            UIExpansionModLoader.PackageName,
+            "UIExpansionSettings",
+            "HUD"
+        );
+
+        ModSettingsManager.TryGet(
+            out bool worldInfo,
+            UIExpansionModLoader.PackageName,
+            "UIExpansionSettings",
+            "WorldInfo"
+        );
+
+        m_panel.IsVisible = hud;
+
+        InstallDebugButton();
+        UpdateHud(worldInfo);
         UpdateDebugHud();
+    }
+
+    private void UpdateHud(bool worldInfo)
+    {
+        if (!m_panel.IsVisible)
+            return;
+
+        m_time.Text = $"Time: {DateTime.Now:HH:mm:ss}";
+
+        if (!worldInfo)
+        {
+            m_position.IsVisible = false;
+            return;
+        }
+
+        ComponentBody? body = m_player.Entity.FindComponent<ComponentBody>(true);
+        if (body != null)
+        {
+            Vector3 p = body.Position;
+            m_position.Text = $"X: {p.X:0}  Y: {p.Y:0}  Z: {p.Z:0}";
+        }
+        else
+        {
+            m_position.Text = "X: --  Y: --  Z: --";
+        }
+
+        m_position.IsVisible = true;
     }
 
     private void InstallDebugButton()
@@ -44,9 +98,9 @@ public class UIExpansionWidget : CanvasWidget
         var button = new BitmapButtonWidget
         {
             Name = "UIExpansion.DebugButton",
-            Size = new Vector2(64f, 64f),
-            NormalSubtexture = ContentManager.Get<Subtexture>("Textures/Atlas/EditItemButton"),
-            ClickedSubtexture = ContentManager.Get<Subtexture>("Textures/Atlas/EditItemButton_Pressed"),
+            Size = new Vector2(68f, 64f),
+            NormalSubtexture = "{Textures/Atlas/EditItemButton}",
+            ClickedSubtexture = "{Textures/Atlas/EditItemButton_Pressed}",
             Margin = new Vector2(4f, 0f)
         };
 
@@ -82,11 +136,7 @@ public class UIExpansionWidget : CanvasWidget
         if (indexOf == null || insert == null)
             return false;
 
-        object? indexObj = indexOf.Invoke(children, new object[] { after });
-        if (indexObj == null)
-            return false;
-
-        int index = (int)indexObj;
+        int index = (int)indexOf.Invoke(children, new object[] { after })!;
         if (index < 0)
             return false;
 
@@ -96,25 +146,22 @@ public class UIExpansionWidget : CanvasWidget
 
     private void UpdateDebugHud()
     {
-        if (m_debugButton != null)
-        {
-            m_debugVisible = m_debugButton.IsClicked;
-            m_debugPanel.IsVisible = m_debugVisible;
-        }
+        if (m_debugButton != null && m_debugButton.IsClicked)
+            m_debugVisible = !m_debugVisible;
 
+        m_debugPanel.IsVisible = m_debugVisible;
         if (!m_debugVisible)
             return;
 
         ComponentBody? body = m_player.Entity.FindComponent<ComponentBody>(true);
         if (body == null)
+        {
+            Children.Find<LabelWidget>("DebugPosition").Text = "XYZ: -- -- --";
             return;
+        }
 
         Vector3 p = body.Position;
-        
-        var debugPosLabel = Children.Find<LabelWidget>("DebugPosition");
-        if (debugPosLabel != null)
-        {
-            debugPosLabel.Text = $"XYZ: {p.X:0.00} / {p.Y:0.00} / {p.Z:0.00}";
-        }
+        Children.Find<LabelWidget>("DebugPosition").Text =
+            $"XYZ: {p.X:0.00} / {p.Y:0.00} / {p.Z:0.00}";
     }
 }
