@@ -1,4 +1,6 @@
-<CanvasWidget xmlns="runtime-namespace:Game">
+<CanvasWidget xmlns="runtime-namespace:Game"
+              IsHitTestVisible="false">
+
   <CanvasWidget Name="DebugPanel"
                 Size="460,150"
                 HorizontalAlignment="Near"
@@ -26,4 +28,5 @@
                  FontScale="0.75" />
 
   </CanvasWidget>
+
 </CanvasWidget>
