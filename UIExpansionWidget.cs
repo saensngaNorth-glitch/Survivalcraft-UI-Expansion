@@ -20,10 +20,13 @@ public sealed class UIExpansionWidget : CanvasWidget
 
         LoadContents(
             this,
-            ContentManager.Get<XElement>("Widgets/UIExpansionWidget")
+            ContentManager.Get<XElement>(
+                "Widgets/UIExpansionWidget"
+            )
         );
 
-        m_debugPanel = Children.Find<CanvasWidget>("DebugPanel");
+        m_debugPanel =
+            Children.Find<CanvasWidget>("DebugPanel");
     }
 
     public override void Update()
@@ -40,10 +43,14 @@ public sealed class UIExpansionWidget : CanvasWidget
             return;
 
         StackPanelWidget? moreContents =
-            m_player.GuiWidget?.Children.Find<StackPanelWidget>("MoreContents");
+            m_player.GuiWidget?
+                .Children
+                .Find<StackPanelWidget>("MoreContents");
 
         BitmapButtonWidget? helpButton =
-            moreContents?.Children.Find<BitmapButtonWidget>("HelpButton");
+            moreContents?
+                .Children
+                .Find<BitmapButtonWidget>("HelpButton");
 
         if (moreContents == null || helpButton == null)
             return;
@@ -51,9 +58,12 @@ public sealed class UIExpansionWidget : CanvasWidget
         var button = new BitmapButtonWidget
         {
             Name = "UIExpansion.DebugButton",
-            Size = new Vector2(68f, 64f),
 
-            // แก้ CS0029: โหลดเป็น Subtexture โดยตรง
+            Size = new Vector2(
+                68f,
+                64f
+            ),
+
             NormalSubtexture =
                 ContentManager.Get<Subtexture>(
                     "Textures/Atlas/EditItemButton"
@@ -64,14 +74,21 @@ public sealed class UIExpansionWidget : CanvasWidget
                     "Textures/Atlas/EditItemButton_Pressed"
                 ),
 
-            Margin = new Vector2(4f, 0f)
+            Margin = new Vector2(
+                4f,
+                0f
+            )
         };
 
-        if (!InsertAfter(moreContents, helpButton, button))
+        if (!InsertAfter(
+                moreContents,
+                helpButton,
+                button))
         {
             Log.Warning(
                 "UI Expansion: could not insert Debug button after HelpButton."
             );
+
             return;
         }
 
@@ -87,23 +104,31 @@ public sealed class UIExpansionWidget : CanvasWidget
         object children = parent.Children;
         Type type = children.GetType();
 
-        MethodInfo? indexOf = type.GetMethod(
-            "IndexOf",
-            BindingFlags.Instance |
-            BindingFlags.Public |
-            BindingFlags.NonPublic,
-            binder: null,
-            types: new[] { typeof(Widget) },
-            modifiers: null);
+        MethodInfo? indexOf =
+            type.GetMethod(
+                "IndexOf",
+                BindingFlags.Instance |
+                BindingFlags.Public |
+                BindingFlags.NonPublic,
+                binder: null,
+                types: new[] { typeof(Widget) },
+                modifiers: null
+            );
 
-        MethodInfo? insert = type.GetMethod(
-            "Insert",
-            BindingFlags.Instance |
-            BindingFlags.Public |
-            BindingFlags.NonPublic,
-            binder: null,
-            types: new[] { typeof(int), typeof(Widget) },
-            modifiers: null);
+        MethodInfo? insert =
+            type.GetMethod(
+                "Insert",
+                BindingFlags.Instance |
+                BindingFlags.Public |
+                BindingFlags.NonPublic,
+                binder: null,
+                types: new[]
+                {
+                    typeof(int),
+                    typeof(Widget)
+                },
+                modifiers: null
+            );
 
         if (indexOf == null || insert == null)
             return false;
@@ -111,43 +136,80 @@ public sealed class UIExpansionWidget : CanvasWidget
         int index =
             (int)indexOf.Invoke(
                 children,
-                new object[] { after })!;
+                new object[] { after }
+            )!;
 
         if (index < 0)
             return false;
 
         insert.Invoke(
             children,
-            new object[] { index + 1, child });
+            new object[]
+            {
+                index + 1,
+                child
+            }
+        );
 
         return true;
     }
 
     private void UpdateDebugHud()
     {
-        if (m_debugButton != null && m_debugButton.IsClicked)
+        if (m_debugButton != null &&
+            m_debugButton.IsClicked)
+        {
             m_debugVisible = !m_debugVisible;
+        }
 
         m_debugPanel.IsVisible = m_debugVisible;
 
         if (!m_debugVisible)
             return;
 
-        ComponentBody? body =
-            m_player.Entity.FindComponent<ComponentBody>(true);
-
         LabelWidget position =
-            Children.Find<LabelWidget>("DebugPosition");
+            Children.Find<LabelWidget>(
+                "DebugPosition"
+            );
+
+        LabelWidget block =
+            Children.Find<LabelWidget>(
+                "DebugBlock"
+            );
+
+        LabelWidget time =
+            Children.Find<LabelWidget>(
+                "DebugTime"
+            );
+
+        ComponentBody? body =
+            m_player.Entity
+                .FindComponent<ComponentBody>(true);
 
         if (body == null)
         {
-            position.Text = "XYZ: -- -- --";
-            return;
+            position.Text =
+                "XYZ: -- / -- / --";
+
+            block.Text =
+                "Block: -- / -- / --";
+        }
+        else
+        {
+            Vector3 p = body.Position;
+
+            position.Text =
+                $"XYZ: {p.X:0.00} / {p.Y:0.00} / {p.Z:0.00}";
+
+            int blockX = (int)Math.Floor(p.X);
+            int blockY = (int)Math.Floor(p.Y);
+            int blockZ = (int)Math.Floor(p.Z);
+
+            block.Text =
+                $"Block: {blockX} / {blockY} / {blockZ}";
         }
 
-        Vector3 p = body.Position;
-
-        position.Text =
-            $"XYZ: {p.X:0.00} / {p.Y:0.00} / {p.Z:0.00}";
+        time.Text =
+            $"Time: {DateTime.Now:HH:mm:ss}";
     }
 }
