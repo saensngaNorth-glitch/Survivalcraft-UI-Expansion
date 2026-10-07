@@ -2,7 +2,7 @@
               IsHitTestVisible="false">
 
   <CanvasWidget Name="DebugPanel"
-                Size="460,150"
+                Size="460,170"
                 HorizontalAlignment="Near"
                 VerticalAlignment="Near"
                 Margin="90,18"
@@ -18,14 +18,19 @@
                  FontScale="0.9" />
 
     <LabelWidget Name="DebugPosition"
-                 Text="XYZ: -- -- --"
+                 Text="XYZ: -- / -- / --"
                  Margin="12,44"
                  FontScale="0.8" />
 
+    <LabelWidget Name="DebugBlock"
+                 Text="Block: -- / -- / --"
+                 Margin="12,78"
+                 FontScale="0.8" />
+
     <LabelWidget Name="DebugTime"
-                 Text="F3 Debug HUD"
-                 Margin="12,82"
-                 FontScale="0.75" />
+                 Text="Time: --:--:--"
+                 Margin="12,112"
+                 FontScale="0.8" />
 
   </CanvasWidget>
 
