@@ -1,12 +1,12 @@
 {
-  "UIExpansion": {"Settings": {"UIExpansionSettings": {
-    "HUD":"HUD Enhancement","HUDDescription":"Show the UI Expansion HUD while playing.",
-    "WorldInfo":"World Information","WorldInfoDescription":"Show player coordinates on the HUD.",
-    "HUDScale":"HUD Scale","HUDScaleDescription":"Change the HUD size."
-  }}},
-  "ModSettings": {"pirachpol.UIExpansion": {"UIExpansionSettings": {
-    "HUD":{"Name":"HUD Enhancement","Description":"Show the UI Expansion HUD while playing."},
-    "WorldInfo":{"Name":"World Information","Description":"Show player coordinates on the HUD."},
-    "HUDScale":{"Name":"HUD Scale","Description":"Change the HUD size."}
-  }}}
+  "UIExpansion": {
+    "1": "DEBUG",
+    "2": "FPS:",
+    "3": "Position:",
+    "4": "Ground block:",
+    "5": "Time:",
+    "6": "World:",
+    "7": "Health:",
+    "8": "Stamina:"
+  }
 }
