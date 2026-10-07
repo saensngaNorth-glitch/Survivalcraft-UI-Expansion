@@ -4,7 +4,8 @@
                 HorizontalAlignment="Near"
                 VerticalAlignment="Near"
                 Margin="90,18"
-                IsVisible="false">
+                IsVisible="false"
+                IsHitTestVisible="false">
 
     <RectangleWidget Name="DebugBackground"
                      FillColor="0,0,0,175" />
