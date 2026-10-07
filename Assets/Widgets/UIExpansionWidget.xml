@@ -1,6 +1,13 @@
 <CanvasWidget xmlns="runtime-namespace:Game">
-  <CanvasWidget Name="DebugPanel" Size="460,150" HorizontalAlignment="Near" VerticalAlignment="Near" Margin="18,110" IsVisible="false">
-    <RectangleWidget Name="DebugBackground" FillColor="0,0,0,175" />
+  <CanvasWidget Name="DebugPanel"
+                Size="460,150"
+                HorizontalAlignment="Near"
+                VerticalAlignment="Near"
+                Margin="90,18"
+                IsVisible="false">
+
+    <RectangleWidget Name="DebugBackground"
+                     FillColor="0,0,0,175" />
 
     <LabelWidget Name="DebugTitle"
                  Text="DEBUG"
@@ -16,5 +23,6 @@
                  Text="F3 Debug HUD"
                  Margin="12,82"
                  FontScale="0.75" />
+
   </CanvasWidget>
 </CanvasWidget>
