@@ -9,77 +9,30 @@
                 IsVisible="false"
                 IsHitTestVisible="false">
 
-    <RectangleWidget Name="DebugBackground"
-                     FillColor="0,0,0,175" />
+    <RectangleWidget Name="DebugBackground" FillColor="0,0,0,175" />
 
-    <LabelWidget Name="DebugTitle"
-                 Text="[UIExpansion:1]"
-                 Margin="14,8"
-                 FontScale="0.9" />
+    <LabelWidget Name="DebugTitle" Text="DEBUG" Margin="14,8" FontScale="0.9" />
 
-    <LabelWidget Name="DebugFPSLabel"
-                 Text="[UIExpansion:2]"
-                 Margin="14,48"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugFPS"
-                 Text="--"
-                 Margin="65,48"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugFPSLabel" Text="FPS:" Margin="14,48" FontScale="0.8" />
+    <LabelWidget Name="DebugFPS" Text="--" Margin="65,48" FontScale="0.8" />
 
-    <LabelWidget Name="DebugPositionLabel"
-                 Text="[UIExpansion:3]"
-                 Margin="14,82"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugPosition"
-                 Text="-- / -- / --"
-                 Margin="90,82"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugPositionLabel" Text="พิกัด:" Margin="14,82" FontScale="0.8" />
+    <LabelWidget Name="DebugPosition" Text="-- / -- / --" Margin="75,82" FontScale="0.8" />
 
-    <LabelWidget Name="DebugBlockLabel"
-                 Text="[UIExpansion:4]"
-                 Margin="14,116"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugBlock"
-                 Text="-- / -- / --"
-                 Margin="145,116"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugBlockLabel" Text="บล็อกใต้เท้า:" Margin="14,116" FontScale="0.8" />
+    <LabelWidget Name="DebugBlock" Text="-- / -- / --" Margin="145,116" FontScale="0.8" />
 
-    <LabelWidget Name="DebugTimeLabel"
-                 Text="[UIExpansion:5]"
-                 Margin="14,150"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugTime"
-                 Text="--:--"
-                 Margin="65,150"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugTimeLabel" Text="เวลา:" Margin="14,150" FontScale="0.8" />
+    <LabelWidget Name="DebugTime" Text="--:--" Margin="65,150" FontScale="0.8" />
 
-    <LabelWidget Name="DebugWorldLabel"
-                 Text="[UIExpansion:6]"
-                 Margin="14,184"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugWorld"
-                 Text="--"
-                 Margin="65,184"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugWorldLabel" Text="โลก:" Margin="14,184" FontScale="0.8" />
+    <LabelWidget Name="DebugWorld" Text="--" Margin="65,184" FontScale="0.8" />
 
-    <LabelWidget Name="DebugHealthLabel"
-                 Text="[UIExpansion:7]"
-                 Margin="14,218"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugHealth"
-                 Text="-- / --"
-                 Margin="115,218"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugHealthLabel" Text="พลังชีวิต:" Margin="14,218" FontScale="0.8" />
+    <LabelWidget Name="DebugHealth" Text="-- / --" Margin="115,218" FontScale="0.8" />
 
-    <LabelWidget Name="DebugStaminaLabel"
-                 Text="[UIExpansion:8]"
-                 Margin="14,252"
-                 FontScale="0.8" />
-    <LabelWidget Name="DebugStamina"
-                 Text="-- / --"
-                 Margin="95,252"
-                 FontScale="0.8" />
+    <LabelWidget Name="DebugStaminaLabel" Text="ความอึด:" Margin="14,252" FontScale="0.8" />
+    <LabelWidget Name="DebugStamina" Text="-- / --" Margin="95,252" FontScale="0.8" />
 
   </CanvasWidget>
-
 </CanvasWidget>
